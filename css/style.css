@@ -1,0 +1,92 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    min-width: 1280px;
+    background-color: #131313;
+    font-family: 'Microsoft Yahei';
+
+}
+
+h1 {
+    color: #d23d3c;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.box{
+    position: relative;
+    width: 300px;
+    margin: 60px auto;
+    background-color: aliceblue;
+    text-align: center;
+    font-size: 16px;
+    color: #F0F0F0;
+}
+
+
+p {
+    display: block;
+    width: 300px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #181818;
+    border-bottom: 2px solid #d23d3c;
+}
+
+/*展开小按钮*/
+.control {
+    width: 52px;
+    height: 50px;
+    background-color: #d23d3c;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+}
+
+.box .control:after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top:0;
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    margin: 18px auto;
+    transform: rotate(-45deg);
+    transition: 0.5s;
+}
+.box.open .control:after{
+    transform: rotate(135deg);
+    transition: 0.5s;
+    margin-top: 23px;
+
+}
+
+/*下拉框*/
+ ul.select {
+     width: 300px;
+    list-style-type: none;
+    cursor: pointer;
+    display: none;
+}
+ .box.open ul.select{
+     display: block;
+ }
+
+ul.select li {
+    display: block;
+    padding: 15px;
+    background-color: #181818;
+    border: 1px solid #131313;
+}
+
+ ul.select li:hover {
+    background-color: #d23d3c;
+}

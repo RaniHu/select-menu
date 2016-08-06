@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3下拉框展开动画</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-1.9.1-min.js"></script>
+    <style>
+        @-webkit-keyframes open {
+            0%{transform: scaleY(0)}
+            100%{transform: scaleY(1)}
+        }
+        @-webkit-keyframes text {
+            0%{transform: translateX(500)}
+            100%{transform: translateX(0)}
+        }
+
+        ul.select {
+            transition: height 1s , top 1s;
+        }
+        ul.select li{
+            opacity: 0;
+            transform: translateX(300);
+        }
+
+
+        .box.open ul.select {
+            position: absolute;
+            top:-30px;
+            left: 0;
+            /*animation: open 0.2s;*/
+            transition: 1s ease-in;
+            transform-origin: center;
+        }
+        .box.open ul.select li{
+            transition: 1s;
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .box.open ul.select li:nth-child(1){
+            transition: opacity 0.3s 0.1s;
+        }.box.open ul.select li:nth-child(2){
+            transition: opacity 0.3s 0.5s;
+        }.box.open ul.select li:nth-child(2){
+            transition: opacity 0.3s 0.9s;
+        }
+    </style>
+</head>
+<body>
+<script>
+    $(function () {
+        //将浏览器高度赋给wrapper
+        var clientH = $(window).height();
+        $(".wrapper").height(clientH);
+
+        //点击小图标时，下拉框弹出
+        $(".control").click(function (e) {
+            $(".box").toggleClass("open");
+            $(".select").css("display", "block");
+            e.stopPropagation();                            //阻止事件冒泡
+        });
+
+        //点击每个选项时
+        $(".select li").click(function (e) {
+            var _this = $(this);
+            $("p").text(_this.text());
+            $(".box").removeClass("open");
+            $(".select").css("display", "none");
+            e.stopPropagation();
+
+        });
+        //点击页面空白处收起下拉框
+        $(document).click(function(){
+            $(".box").removeClass("open");
+            $(".select").css("display", "none");
+        });
+    })
+</script>
+
+<div class="wrapper">
+    <h1>css3实现下拉框展开动画</h1>
+    <div class="box">
+        <p>请选择分类</p>
+        <span class="control"></span>
+        <ul class="select">
+            <li>html</li>
+            <li>css</li>
+            <li>javascript</li>
+            <li>jquery</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
